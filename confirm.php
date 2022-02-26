@@ -21,5 +21,11 @@
             <input type="hidden" name="title" value="<?php echo $_POST['title']; ?>">
             <input type="hidden" name="article" value="<?php echo $_POST['article']; ?>">
         </form>
+
+        <?php
+            require 'mainte/insert.php';
+            insertContact($_POST);
+        ?>
+
     </body>
 </html>
