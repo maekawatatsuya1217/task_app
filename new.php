@@ -13,7 +13,7 @@
         <form method="POST" action="confirm.php">
             <label>名前<input type="text" name="your_name"></label>
             <label>タイトル<input type="text" name="title"></label>
-            <label>記事<textarea name="article" id="" cols="30" rows="10"></textarea></label>
+            <label>記事<textarea name="article"cols="30" rows="10"></textarea></label>
             <input type="submit" value="確認画面へ">
         </form>
         <!-- 投稿フォーム -->

@@ -9,11 +9,24 @@
     <body>
         <h1>一覧表示</h1>
 
-        <a href="new.php">新規投稿</a>
+        <div>
+            <a href="new.php">新規投稿</a>
+        </div>
+        
 
         <!-- 一覧表示 -->
         <?php
-            if (!empty($_POST)) {
+
+            // db接続
+            require 'mainte/db_connection.php';
+
+            $sql = "SELECT * FROM blog";
+            $stmt = $pdo->query($sql);
+            foreach ($stmt as $row) {
+                echo '名前：'. $row['your_name'];
+                echo 'タイトル：' . $row['title'];
+                echo '記事：' . $row['article'];
+                echo '<br>';
             }
         ?>
         <!-- 一覧表示 -->
