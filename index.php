@@ -14,9 +14,6 @@
         <!-- 一覧表示 -->
         <?php
             if (!empty($_POST)) {
-                echo $_POST['your_name'];
-                echo $_POST['title'];
-                echo $_POST['article'];
             }
         ?>
         <!-- 一覧表示 -->
