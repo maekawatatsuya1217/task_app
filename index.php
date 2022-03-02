@@ -16,17 +16,22 @@
 
         <!-- 一覧表示 -->
         <?php
-
             // db接続
             require 'mainte/db_connection.php';
 
-            $sql = "SELECT * FROM blog";
+            echo '<br>';
+
+            // 情報取得
+            $sql = "SELECT * FROM blog ORDER BY created_at DESC";
             $stmt = $pdo->query($sql);
+
             foreach ($stmt as $row) {
                 echo '名前：'. $row['your_name'];
-                echo 'タイトル：' . $row['title'];
-                echo '記事：' . $row['article'];
-                echo '<br>';
+                echo 'タイトル：' .$row['title'];
+                echo '記事：' .$row['article'];
+                ?>
+                <a href="edit.php?id=<?php echo $row['id']; ?>">編集</a>
+                <?php echo '<br>';
             }
         ?>
         <!-- 一覧表示 -->
