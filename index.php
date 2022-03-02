@@ -31,6 +31,7 @@
                 echo '記事：' .$row['article'];
                 ?>
                 <a href="edit.php?id=<?php echo $row['id']; ?>">編集</a>
+                <a href="confirm2.php?id=<?php echo $row['id']; ?>">削除</a>
                 <?php echo '<br>';
             }
         ?>
