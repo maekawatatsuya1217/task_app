@@ -9,22 +9,22 @@
     <body>
         <h1>入力情報確認</h1>
 
-        <form method="POST" action="index.php">
+        <form method="GET" action="index.php">
             名前
-            <?php echo $_POST['your_name']; ?>
+            <?php echo $_GET['your_name']; ?>
             タイトル
-            <?php echo $_POST['title'] ?>
+            <?php echo $_GET['title'] ?>
             記事
-            <?php echo $_POST['article'] ?>
+            <?php echo $_GET['article'] ?>
             <input type="submit" value="投稿">
-            <input type="hidden" name="your_name" value="<?php echo $_POST['your_name']; ?>">
-            <input type="hidden" name="title" value="<?php echo $_POST['title']; ?>">
-            <input type="hidden" name="article" value="<?php echo $_POST['article']; ?>">
+            <input type="hidden" name="your_name" value="<?php echo $_GET['your_name']; ?>">
+            <input type="hidden" name="title" value="<?php echo $_GET['title']; ?>">
+            <input type="hidden" name="article" value="<?php echo $_GET['article']; ?>">
         </form>
 
         <?php
             require 'mainte/insert.php';
-            insertContact($_POST);
+            insertContact($_GET);
         ?>
 
     </body>
