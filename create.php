@@ -10,7 +10,7 @@
         <h1>新規投稿</h1>
 
         <!-- 投稿フォーム -->
-        <form method="GET" action="confirm.php">
+        <form method="POST" action="create_confirm.php">
             <label>名前<input type="text" name="your_name"></label>
             <label>タイトル<input type="text" name="title"></label>
             <label>記事<textarea name="article"cols="30" rows="10"></textarea></label>

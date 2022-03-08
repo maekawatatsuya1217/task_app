@@ -1,6 +1,5 @@
 <!-- 情報取得 -->
 <?php
-
     require 'mainte/db_connection.php';
 
     if (!empty($_GET['id'])) {
@@ -28,30 +27,27 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TaskApp</title>
+        <title>Document</title>
     </head>
     <body>
-        <h1>編集</h1>
-
-        <!-- 編集フォーム -->
-        <form method="POST" action="update.php?id=<?php echo $id; ?>">
-            <label>名前<input type="text" name="your_name" value="<?php if (!empty($your_name)) {
-                 echo $your_name;
-            } ?>"></label>
-            <label>タイトル<input type="text" name="title" value="<?php if (!empty($title)) {
-                echo $title;
-            } ?>"></label>
-            <label>記事<textarea name="article"cols="30" rows="10"><?php if (!empty($article)) {
-                echo $article;} ?>
-            </textarea></label>
-            <!-- id渡す -->
-            <input type="hidden" name="id" value="<?php if (!empty($id)) {
-                echo $id;
-                } ?>">
-            <!-- id渡す -->
-            <input type="submit" value="更新">
-        </form>
-        <!-- 編集フォーム -->
+        <h1>
+            本当に削除しますか？
+        </h1>
         
+        <form method="POST" action="delete.php?id=<?php echo $id; ?>">
+            <!-- id渡す -->
+            <input type="hidden" name="id" value="<?php if (!empty($id)) {echo $id;} ?>">
+            <!-- id渡す -->
+            <input type="hidden" name="your_name" value="<?php if (!empty($your_name)) {
+                echo $your_name;
+            } ?>">
+            <input type="hidden" name="title" value="<?php if (!empty($title)) {
+                echo $title;
+            } ?>">
+            <input type="hidden" name="article" value="<?php if (!empty($article)) {
+                echo $article;
+            } ?>">
+            <input type="submit" value="削除">
+        </form>
     </body>
 </html>
