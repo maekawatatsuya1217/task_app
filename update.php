@@ -2,18 +2,18 @@
 
     require 'mainte/db_connection.php';
 
-    if (!empty($_GET['id'])) {
+    if (!empty($_POST['id'])) {
         try {
             $stmt = $pdo->prepare("UPDATE blog SET your_name = :your_name, title = :title, article = :article WHERE id = :id");
-            $stmt->bindValue( ':id', $_GET['id'], PDO::PARAM_INT);
-            $stmt->bindValue( ':your_name', $_GET['your_name'], PDO::PARAM_STR);
-            $stmt->bindValue( ':title', $_GET['title'], PDO::PARAM_STR);
-            $stmt->bindValue( ':article', $_GET['article'], PDO::PARAM_STR);
-            $stmt->execute(array(':your_name' => $_GET['your_name'], ':title' => $_GET['title'], ':article' => $_GET['article'], ':id' => $_GET['id']));
+            $stmt->bindValue( ':id', $_POST['id'], PDO::PARAM_INT);
+            $stmt->bindValue( ':your_name', $_POST['your_name'], PDO::PARAM_STR);
+            $stmt->bindValue( ':title', $_POST['title'], PDO::PARAM_STR);
+            $stmt->bindValue( ':article', $_POST['article'], PDO::PARAM_STR);
+            $stmt->execute(array(':your_name' => $_POST['your_name'], ':title' => $_POST['title'], ':article' => $_POST['article'], ':id' => $_POST['id']));
             echo "情報を更新しました。";
         } catch (Exception $e) {
             echo 'エラーが発生しました。:' . $e->getMessage();
-        }if(empty($_GET['id']) ) {
+        }if(empty($_POST['id']) ) {
             header("Location: index.php");
             exit;
         }

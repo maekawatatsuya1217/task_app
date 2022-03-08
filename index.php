@@ -1,3 +1,15 @@
+<?php
+    // db接続
+    require 'mainte/db_connection.php';
+
+   // 情報取得
+   $sql = "SELECT * FROM blog ORDER BY created_at DESC";
+
+   //    変数をわかりやすく
+   $blogs = $pdo->query($sql);
+    
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -8,33 +20,20 @@
     </head>
     <body>
         <h1>一覧表示</h1>
-
         <div>
-            <a href="new.php">新規投稿</a>
+            <a href="create.php">新規投稿</a>
         </div>
-        
-
-        <!-- 一覧表示 -->
-        <?php
-            // db接続
-            require 'mainte/db_connection.php';
-
-            echo '<br>';
-
-            // 情報取得
-            $sql = "SELECT * FROM blog ORDER BY created_at DESC";
-            $stmt = $pdo->query($sql);
-
-            foreach ($stmt as $row) {
-                echo '名前：'. $row['your_name'];
-                echo 'タイトル：' .$row['title'];
-                echo '記事：' .$row['article'];
-                ?>
-                <a href="edit.php?id=<?php echo $row['id']; ?>">編集</a>
-                <a href="confirm2.php?id=<?php echo $row['id']; ?>">削除</a>
-                <?php echo '<br>';
-            }
-        ?>
-        <!-- 一覧表示 -->
+        <div>
+            <!-- 一覧表示 -->
+            <?php foreach($blogs as $blog) : ?>
+               <div>
+                   <h2><?php echo $blog['title'] ?></h2>
+                   <p>筆者：<?php echo $blog['your_name'] ?></p>
+                   <a href="edit.php?id=<?php echo $blog['id']; ?>">編集</a>
+                   <a href="delete_confirm.php?id=<?php echo $blog['id']; ?>">削除</a>
+               </div>
+            <?php endforeach; ?>
+            <!-- 一覧表示 -->
+        </div>
     </body>
 </html>

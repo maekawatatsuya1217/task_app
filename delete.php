@@ -2,16 +2,16 @@
 
     require 'mainte/db_connection.php';
 
-    if (!empty($_GET['id'])) {
+    if (!empty($_POST['id'])) {
         try {
             $stmt = $pdo->prepare("DELETE FROM blog WHERE id = :id");
-            $stmt->bindValue( ':id', $_GET['id'], PDO::PARAM_INT);
+            $stmt->bindValue( ':id', $_POST['id'], PDO::PARAM_INT);
             $stmt->execute();
             echo "削除しました。";
         } catch (Exception $e) {
             echo 'エラーが発生しました。:' . $e->getMessage();
         } 
-        if(empty($_GET['id']) ) {
+        if(empty($_POST['id']) ) {
             header("Location: index.php");
             exit;
         }
